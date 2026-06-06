@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext.jsx'
 import { ConfirmModal, PlayerDot, Modal } from '../components/ui.jsx'
 import WinnerModal from '../components/WinnerModal.jsx'
-import { GAME_META, GAME_TYPES, FARKLE_TARGET, FARKLE_MIN_ON_BOARD, FARKLE_RULES } from '../lib/constants.js'
+import { GAME_META, GAME_TYPES, FARKLE_TARGET, FARKLE_RULES } from '../lib/constants.js'
 
 const meta = GAME_META[GAME_TYPES.FARKLE]
 
@@ -11,7 +11,7 @@ export default function FarkleGame() {
   const { activeGame, getPlayer, updateActiveGame, addGame, clearActiveGame, play } = useApp()
   const navigate = useNavigate()
   const players = activeGame.playerIds.map(getPlayer).filter(Boolean)
-  const { totals, onBoard, turns, currentPlayer = 0 } = activeGame.state
+  const { totals, turns, currentPlayer = 0 } = activeGame.state
 
   const [entry, setEntry] = useState('')
   const [hotDice, setHotDice] = useState(false)
@@ -19,7 +19,6 @@ export default function FarkleGame() {
   const [confirmEnd, setConfirmEnd] = useState(false)
   const [confirmQuit, setConfirmQuit] = useState(false)
   const [showWinner, setShowWinner] = useState(false)
-  const [note, setNote] = useState('')
 
   const cur = players[currentPlayer % players.length]
 
@@ -39,45 +38,25 @@ export default function FarkleGame() {
 
   const recordTurn = ({ points, busted }) => {
     const pid = cur.id
-    const willBeOnBoard = onBoard[pid] || points >= FARKLE_MIN_ON_BOARD
-    // If not on board yet and under the threshold, the turn scores nothing.
-    const counts = !busted && willBeOnBoard
-    const added = counts ? points : 0
+    const added = busted ? 0 : points
 
     updateActiveGame((st) => {
       const next = {
         ...st,
         totals: { ...st.totals, [pid]: (st.totals[pid] || 0) + added },
-        onBoard: { ...st.onBoard, [pid]: st.onBoard[pid] || counts },
         turns: [
           ...st.turns,
-          {
-            pid,
-            points: added,
-            attempted: points,
-            busted,
-            hotDice,
-            prevOnBoard: st.onBoard[pid] || false,
-            prevPlayer: st.currentPlayer,
-          },
+          { pid, points: added, attempted: points, busted, hotDice, prevPlayer: st.currentPlayer },
         ],
       }
       return advance(next)
     })
 
-    if (busted) {
-      play('bust')
-    } else if (!willBeOnBoard) {
-      play('undo')
-      setNote(`${cur.name} needs ${FARKLE_MIN_ON_BOARD}+ in one turn to get on the board.`)
-      setTimeout(() => setNote(''), 2600)
-    } else {
-      play('score')
-    }
+    play(busted ? 'bust' : 'score')
 
     // win check (against the new total)
     const newTotal = (totals[pid] || 0) + added
-    if (counts && newTotal >= FARKLE_TARGET) {
+    if (!busted && newTotal >= FARKLE_TARGET) {
       setTimeout(() => setShowWinner(true), 250)
     }
 
@@ -100,7 +79,6 @@ export default function FarkleGame() {
       return {
         ...st,
         totals: { ...st.totals, [t.pid]: (st.totals[t.pid] || 0) - t.points },
-        onBoard: { ...st.onBoard, [t.pid]: t.prevOnBoard },
         turns: st.turns.slice(0, -1),
         currentPlayer: t.prevPlayer,
       }
@@ -192,7 +170,7 @@ export default function FarkleGame() {
                 <div className="h-full rounded-full bg-gold transition-all" style={{ width: `${pct}%` }} />
               </div>
               <p className="mt-1 text-[10px] uppercase tracking-wide text-ivory-dim">
-                {onBoard[p.id] ? 'On the board' : `Off board · need ${FARKLE_MIN_ON_BOARD}+`}
+                {Math.round(pct)}% to {FARKLE_TARGET.toLocaleString()}
               </p>
             </div>
           )
@@ -231,7 +209,6 @@ export default function FarkleGame() {
             Bank Points
           </button>
         </div>
-        {note && <p className="mt-2 animate-fade-in text-center text-sm text-gold">{note}</p>}
       </div>
 
       {/* Turn log */}
@@ -247,8 +224,8 @@ export default function FarkleGame() {
                     <PlayerDot color={p?.color} /> {p?.name}
                     {t.hotDice && <span title="Hot dice">🔥</span>}
                   </span>
-                  <span className={t.busted ? 'font-semibold text-burgundy-light' : t.points === 0 ? 'text-ivory-dim' : 'font-semibold text-gold'}>
-                    {t.busted ? 'Farkle — 0' : t.points === 0 ? `${t.attempted} (off board)` : `+${t.points.toLocaleString()}`}
+                  <span className={t.busted ? 'font-semibold text-burgundy-light' : 'font-semibold text-gold'}>
+                    {t.busted ? 'Farkle — 0' : `+${t.points.toLocaleString()}`}
                   </span>
                 </li>
               )

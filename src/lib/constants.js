@@ -133,7 +133,6 @@ export const FARKLE_RULES = {
   ],
   notes: [
     { title: 'Hot Dice', body: 'Score on all six dice in a turn and you may roll all six again, banking points as you go.' },
-    { title: 'Getting on the Board', body: 'You must score at least 500 points in a single turn before any of your points count.' },
     { title: 'Busting', body: 'Roll with no scoring dice and you bust — you lose every point accumulated that turn.' },
     { title: 'Winning', body: 'First player to reach 10,000 points triggers the end of the game.' },
   ],

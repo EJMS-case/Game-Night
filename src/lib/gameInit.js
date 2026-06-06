@@ -46,8 +46,7 @@ export function initialGameState(type, playerIds) {
     }
     case GAME_TYPES.FARKLE: {
       const totals = Object.fromEntries(playerIds.map((p) => [p, 0]))
-      const onBoard = Object.fromEntries(playerIds.map((p) => [p, false]))
-      return { totals, onBoard, turns: [], currentPlayer: 0 }
+      return { totals, turns: [], currentPlayer: 0 }
     }
     default:
       return {}
