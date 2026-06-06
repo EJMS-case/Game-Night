@@ -6,6 +6,7 @@ import { GAME_TYPES, GAME_META } from '../lib/constants.js'
 import { headToHead } from '../lib/stats.js'
 import { initialGameState } from '../lib/gameInit.js'
 import { fmtDate } from '../lib/format.js'
+import { SyncBanner, SyncStatusPill } from '../components/Sync.jsx'
 
 const STAT_TYPES = [GAME_TYPES.YAHTZEE, GAME_TYPES.YAHTZEE_WORDS, GAME_TYPES.FARKLE, GAME_TYPES.FULL_BOARD]
 
@@ -30,7 +31,13 @@ export default function Home() {
 
   return (
     <div className="animate-fade-in">
-      <PageHeader subtitle="Welcome back" title={<span className="text-gradient-gold">Game Night</span>} />
+      <PageHeader
+        subtitle="Welcome back"
+        title={<span className="text-gradient-gold">Game Night</span>}
+        right={<SyncStatusPill onClick={() => navigate('/settings')} />}
+      />
+
+      <SyncBanner />
 
       {/* Quick actions */}
       <div className="grid grid-cols-2 gap-3">

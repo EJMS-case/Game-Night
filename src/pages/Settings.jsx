@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext.jsx'
 import { PageHeader } from '../components/Layout.jsx'
 import { PlayerDot, SectionTitle, ConfirmModal } from '../components/ui.jsx'
 import { MAX_PLAYERS, PLAYER_COLORS } from '../lib/constants.js'
+import { SyncManager } from '../components/Sync.jsx'
 
 export default function Settings() {
   const { players, settings, updateSettings, addPlayer, updatePlayer, removePlayer, resetStats, resetAll, play } = useApp()
@@ -68,6 +69,12 @@ export default function Settings() {
         ) : (
           <p className="mt-2 text-center text-xs text-ivory-dim">Maximum of {MAX_PLAYERS} players.</p>
         )}
+      </section>
+
+      {/* Shared sync */}
+      <section className="mt-7">
+        <SectionTitle>Sync</SectionTitle>
+        <SyncManager />
       </section>
 
       {/* Preferences */}

@@ -30,7 +30,20 @@ micro-animations.
 ## 🛠 Tech
 
 React + Vite, Tailwind CSS, React Router (hash routing), Web Audio synthesized sound effects.
-All state lives in `localStorage` under the `game-night:v1` key.
+Local-first: all state lives in `localStorage` under the `game-night:v1` key and works fully
+offline. An optional **shared backend** (Supabase) syncs players & game history across devices.
+
+## 🔗 Shared sync (optional)
+
+The app is local-first but can sync across devices. In **Settings → Sync** (or the Home prompt),
+enter a secret **house code**. Every device that enters the same code shares one live game history
+in real time. Settings like sound stay per-device.
+
+- Data is stored in Supabase Postgres, namespaced by a hash of the house code.
+- The publishable (client-safe) key ships in the bundle; the house code is the access gate, so
+  treat it like a password. This is lightweight namespacing, not strong security.
+- Tables: `gn_players`, `gn_games` (RLS enabled). Realtime keeps devices in sync.
+- If the backend is unreachable or no code is set, the app keeps working purely from local storage.
 
 ## 🚀 Getting started
 
