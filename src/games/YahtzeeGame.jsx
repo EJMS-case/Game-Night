@@ -167,7 +167,7 @@ export default function YahtzeeGame() {
               onChange={(e) => setWord(p.id, cat.key, e.target.value.toUpperCase())}
               placeholder="word"
               maxLength={6}
-              className="w-full rounded-md border border-gold/15 bg-charcoal/50 px-1.5 py-1 text-center text-[11px] uppercase tracking-wide text-ivory-dim placeholder:text-ivory-dim/30 focus:border-gold/60 focus:outline-none"
+              className="w-full rounded-md border border-black/15 bg-white px-1.5 py-1 text-center text-[11px] uppercase tracking-wide text-ivory placeholder:text-ivory-dim/30 focus:border-gold/60 focus:outline-none"
             />
           )}
           {cat.fixed ? (
@@ -176,7 +176,7 @@ export default function YahtzeeGame() {
                 onClick={() => setScore(p.id, cat.key, num(value) === cat.fixed ? '' : cat.fixed)}
                 className={`flex-1 rounded-md py-1.5 text-sm font-bold transition-colors ${
                   num(value) === cat.fixed
-                    ? 'bg-gold text-charcoal'
+                    ? 'bg-gold text-white'
                     : 'border border-gold/25 bg-charcoal/50 text-ivory'
                 }`}
               >
@@ -186,7 +186,7 @@ export default function YahtzeeGame() {
                 onClick={() => setScore(p.id, cat.key, value === '0' || value === 0 ? '' : 0)}
                 className={`w-8 rounded-md py-1.5 text-sm font-bold transition-colors ${
                   value === 0 || value === '0'
-                    ? 'bg-burgundy text-ivory'
+                    ? 'bg-burgundy text-white'
                     : 'border border-gold/15 bg-charcoal/40 text-ivory-dim'
                 }`}
                 title="Scratch (0)"
@@ -201,7 +201,7 @@ export default function YahtzeeGame() {
               value={value}
               onChange={(e) => setScore(p.id, cat.key, e.target.value)}
               placeholder="–"
-              className="w-full rounded-md border border-gold/20 bg-charcoal/60 px-1.5 py-1.5 text-center text-base font-semibold text-ivory placeholder:text-ivory-dim/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/50"
+              className="w-full rounded-md border border-black/15 bg-white px-1.5 py-1.5 text-center text-base font-semibold text-ivory placeholder:text-ivory-dim/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/50"
             />
           )}
         </div>

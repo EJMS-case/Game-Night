@@ -73,7 +73,7 @@ export default function NewGame() {
                   <span className="font-semibold">{p.name}</span>
                 </span>
                 {on && (
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold text-xs font-bold text-charcoal">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold text-xs font-bold text-white">
                     {order + 1}
                   </span>
                 )}

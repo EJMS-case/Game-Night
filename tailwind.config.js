@@ -4,28 +4,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        burgundy: '#6B2737',
-        'burgundy-light': '#8A3447',
-        forest: '#1B4332',
-        'forest-light': '#2D6A4F',
-        gold: '#B8960C',
-        'gold-light': '#D4B125',
-        'gold-dim': '#8A7109',
-        ivory: '#F5F0E8',
-        'ivory-dim': '#C9C2B5',
-        charcoal: '#1A1A1F',
-        'charcoal-light': '#26262E',
-        'charcoal-card': '#22222A',
+        burgundy: '#7A2E40',
+        'burgundy-light': '#94384E',
+        forest: '#1B6A50',
+        'forest-light': '#22835F',
+        // "gold" kept as the token name to avoid churn, but it is now a clean emerald accent.
+        gold: '#147A5C',
+        'gold-light': '#18906C',
+        'gold-dim': '#0E5D45',
+        ivory: '#23272E', // primary ink (dark text on light surfaces)
+        'ivory-dim': '#6B7280', // muted text
+        charcoal: '#C7CCD4', // light gray used for low-opacity tints (bg-charcoal/xx)
+        'charcoal-light': '#F0EFEA',
+        'charcoal-card': '#FFFFFF', // solid surfaces: cards, sticky headers, nav
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],
         body: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 4px 24px rgba(0, 0, 0, 0.45)',
-        'card-lg': '0 12px 48px rgba(0, 0, 0, 0.55)',
-        'gold-glow': '0 0 24px rgba(184, 150, 12, 0.35)',
-        inset: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
+        card: '0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.08)',
+        'card-lg': '0 12px 40px rgba(16, 24, 40, 0.16)',
+        'gold-glow': '0 6px 20px rgba(20, 122, 92, 0.25)',
+        inset: 'inset 0 1px 0 rgba(255, 255, 255, 0.6)',
       },
       keyframes: {
         'pop-in': {
@@ -34,8 +35,8 @@ export default {
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         'score-flash': {
-          '0%': { backgroundColor: 'rgba(184, 150, 12, 0.45)' },
-          '100%': { backgroundColor: 'rgba(184, 150, 12, 0)' },
+          '0%': { backgroundColor: 'rgba(20, 122, 92, 0.22)' },
+          '100%': { backgroundColor: 'rgba(20, 122, 92, 0)' },
         },
         'fade-in': {
           '0%': { opacity: '0' },
@@ -54,8 +55,8 @@ export default {
           '100%': { backgroundPosition: '200% 0' },
         },
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 8px rgba(184, 150, 12, 0.3)' },
-          '50%': { boxShadow: '0 0 22px rgba(184, 150, 12, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 6px rgba(20, 122, 92, 0.25)' },
+          '50%': { boxShadow: '0 0 18px rgba(20, 122, 92, 0.5)' },
         },
       },
       animation: {

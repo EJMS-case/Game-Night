@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html,
@@ -14,27 +14,26 @@
   }
 
   body {
-    @apply bg-charcoal font-body text-ivory antialiased;
+    @apply font-body text-ivory antialiased;
     margin: 0;
-    /* Deep felt card-table base: layered radial jewel-tone glows */
-    background-color: #1a1a1f;
+    /* Clean, light "linen" background with the faintest warm tint. */
+    background-color: #f6f5f1;
     background-image:
-      radial-gradient(circle at 18% 12%, rgba(107, 39, 55, 0.28), transparent 42%),
-      radial-gradient(circle at 84% 8%, rgba(27, 67, 50, 0.26), transparent 40%),
-      radial-gradient(circle at 50% 120%, rgba(184, 150, 12, 0.1), transparent 55%);
+      radial-gradient(circle at 15% 0%, rgba(20, 122, 92, 0.05), transparent 40%),
+      radial-gradient(circle at 90% 5%, rgba(122, 46, 64, 0.04), transparent 38%);
     background-attachment: fixed;
   }
 
-  /* Grain / noise overlay for the felt texture */
+  /* Very subtle paper grain — barely-there texture, not the old heavy felt. */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.5;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
   }
 
   #root {
@@ -50,14 +49,13 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(184, 150, 12, 0.3);
+    background: rgba(20, 122, 92, 0.25);
     border-radius: 8px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(184, 150, 12, 0.5);
+    background: rgba(20, 122, 92, 0.45);
   }
 
-  /* Tame number-input spinners but keep them tappable */
   input[type='number']::-webkit-outer-spin-button,
   input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -70,20 +68,18 @@
 
 @layer components {
   .card {
-    @apply rounded-2xl border border-gold/20 bg-charcoal-card shadow-card;
-    background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0.12));
+    @apply rounded-2xl border border-black/[0.06] bg-charcoal-card shadow-card;
   }
 
+  /* Soft tinted panel (used for celebratory / highlighted surfaces). */
   .card-felt {
-    background-color: #1f2a24;
-    background-image:
-      linear-gradient(160deg, rgba(45, 106, 79, 0.18), rgba(0, 0, 0, 0.25)),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.06'/%3E%3C/svg%3E");
-    @apply rounded-2xl border border-gold/25 shadow-card;
+    background-color: #f1f7f4;
+    background-image: linear-gradient(160deg, rgba(20, 122, 92, 0.08), rgba(20, 122, 92, 0.02));
+    @apply rounded-2xl border border-gold/20 shadow-card;
   }
 
   .gold-divider {
-    @apply border-0 border-t border-gold/25;
+    @apply border-0 border-t border-black/10;
   }
 
   .btn {
@@ -91,25 +87,25 @@
            transition-all duration-150 active:scale-[0.97] select-none disabled:opacity-40 disabled:pointer-events-none;
   }
   .btn-gold {
-    @apply btn bg-gold text-charcoal shadow-gold-glow hover:bg-gold-light;
+    @apply btn bg-gold text-white shadow-gold-glow hover:bg-gold-light;
   }
   .btn-burgundy {
-    @apply btn bg-burgundy text-ivory hover:bg-burgundy-light;
+    @apply btn bg-burgundy text-white hover:bg-burgundy-light;
   }
   .btn-forest {
-    @apply btn bg-forest text-ivory hover:bg-forest-light;
+    @apply btn bg-forest text-white hover:bg-forest-light;
   }
   .btn-ghost {
-    @apply btn border border-gold/30 bg-transparent text-ivory hover:bg-gold/10;
+    @apply btn border border-gold/40 bg-white text-gold hover:bg-gold/5;
   }
 
   .input-field {
-    @apply w-full rounded-xl border border-gold/25 bg-charcoal/70 px-3 py-2.5 text-ivory
-           placeholder:text-ivory-dim/50 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/60;
+    @apply w-full rounded-xl border border-black/15 bg-white px-3 py-2.5 text-ivory
+           placeholder:text-ivory-dim/50 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40;
   }
 
   .stat-chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-gold/25 bg-charcoal/60 px-3 py-1 text-sm;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-sm shadow-sm;
   }
 
   .heading {
@@ -117,13 +113,13 @@
   }
 
   .label-caps {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold/80;
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold;
   }
 }
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(95deg, #d4b125, #b8960c 45%, #f0d878);
+    background: linear-gradient(95deg, #18906c, #147a5c 55%, #0e5d45);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

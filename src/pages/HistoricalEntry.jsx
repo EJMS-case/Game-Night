@@ -173,7 +173,7 @@ export default function HistoricalEntry() {
               <div key={p.id} className={`card p-3 ${on ? '' : 'opacity-50'}`}>
                 <div className="flex items-center gap-2">
                   <button onClick={() => toggle(p.id)} className="flex items-center gap-2 font-semibold">
-                    <span className={`flex h-5 w-5 items-center justify-center rounded-md border ${on ? 'border-gold bg-gold text-charcoal' : 'border-gold/30'}`}>
+                    <span className={`flex h-5 w-5 items-center justify-center rounded-md border ${on ? 'border-gold bg-gold text-white' : 'border-gold/30'}`}>
                       {on && '✓'}
                     </span>
                     <PlayerDot color={p.color} /> {p.name}

@@ -78,7 +78,7 @@ export function ConfirmModal({
 }
 
 // --- Confetti (pure CSS, gold/jewel) --------------------------------------
-const CONFETTI_COLORS = ['#B8960C', '#D4B125', '#6B2737', '#2D6A4F', '#F5F0E8']
+const CONFETTI_COLORS = ['#147A5C', '#7A2E40', '#2563A8', '#7C3AED', '#C2410C']
 
 export function Confetti({ count = 60 }) {
   const pieces = Array.from({ length: count })

@@ -161,7 +161,7 @@ export default function FarkleGame() {
                 <span className="flex items-center gap-2 font-semibold">
                   <PlayerDot color={p.color} size={12} /> {p.name}
                 </span>
-                {isTurn && <span className="rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold uppercase text-charcoal">Turn</span>}
+                {isTurn && <span className="rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold uppercase text-white">Turn</span>}
               </div>
               <p className="mt-1 font-display text-4xl font-extrabold text-gradient-gold">
                 {totals[p.id].toLocaleString()}
@@ -195,7 +195,7 @@ export default function FarkleGame() {
           />
           <button
             onClick={() => setHotDice((h) => !h)}
-            className={`btn shrink-0 px-3 ${hotDice ? 'bg-gold text-charcoal animate-pulse-glow' : 'border border-gold/30 text-ivory'}`}
+            className={`btn shrink-0 px-3 ${hotDice ? 'bg-gold text-white animate-pulse-glow' : 'border border-gold/30 text-ivory'}`}
             title="Hot dice — scored on all 6 dice"
           >
             🔥 Hot

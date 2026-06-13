@@ -93,9 +93,9 @@ export default function Settings() {
               updateSettings({ soundEnabled: next })
               if (next) play('score')
             }}
-            className={`relative h-7 w-12 rounded-full transition-colors ${settings.soundEnabled ? 'bg-gold' : 'bg-charcoal/80 ring-1 ring-gold/30'}`}
+            className={`relative h-7 w-12 rounded-full transition-colors ${settings.soundEnabled ? 'bg-gold' : 'bg-charcoal ring-1 ring-black/10'}`}
           >
-            <span className={`absolute top-1 h-5 w-5 rounded-full bg-ivory shadow transition-all ${settings.soundEnabled ? 'left-6' : 'left-1'}`} />
+            <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all ${settings.soundEnabled ? 'left-6' : 'left-1'}`} />
           </button>
         </div>
       </section>

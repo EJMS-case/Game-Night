@@ -38,14 +38,14 @@ export const GAME_META = {
   },
 }
 
-// Palette assigned to players, in priority order.
+// Palette assigned to players, in priority order. Clean jewel tones, no yellow.
 export const PLAYER_COLORS = [
-  '#B8960C', // gold
-  '#6B2737', // burgundy
-  '#2D6A4F', // forest
-  '#C77DFF', // amethyst
-  '#E07A5F', // terracotta
-  '#4895EF', // sapphire
+  '#2563A8', // sapphire
+  '#9B2D43', // garnet
+  '#0E7490', // teal
+  '#7C3AED', // violet
+  '#C2410C', // terracotta
+  '#15803D', // green
 ]
 
 export const DEFAULT_PLAYERS = [
@@ -118,18 +118,19 @@ export const FARKLE_RULES = {
   scoring: [
     { combo: 'Single 1', points: '100' },
     { combo: 'Single 5', points: '50' },
-    { combo: 'Three 1s', points: '1,000' },
+    { combo: 'Three 1s', points: '300' },
     { combo: 'Three 2s', points: '200' },
     { combo: 'Three 3s', points: '300' },
     { combo: 'Three 4s', points: '400' },
     { combo: 'Three 5s', points: '500' },
     { combo: 'Three 6s', points: '600' },
-    { combo: 'Four of a kind', points: '2× the three-of-a-kind value' },
-    { combo: 'Five of a kind', points: '4× the three-of-a-kind value' },
-    { combo: 'Six of a kind', points: '8× the three-of-a-kind value' },
-    { combo: 'Straight 1-2-3-4-5-6', points: '1,500 (or 2,500 — house variant)' },
-    { combo: 'Three pairs', points: '1,500' },
-    { combo: 'Four of a kind + a pair', points: '1,500' },
+    { combo: '4 of a kind', points: '1,000' },
+    { combo: '5 of a kind', points: '2,000' },
+    { combo: '6 of a kind', points: '3,000' },
+    { combo: '1–6 Straight', points: '1,500' },
+    { combo: '3 Pairs', points: '1,500' },
+    { combo: '2 Triplets', points: '2,500' },
+    { combo: '4 of a kind + a pair', points: '1,500' },
   ],
   notes: [
     { title: 'Hot Dice', body: 'Score on all six dice in a turn and you may roll all six again, banking points as you go.' },

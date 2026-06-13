@@ -182,7 +182,7 @@ export default function FullBoardYahtzee() {
             <button
               onClick={() => setCell(ci, p.id, cat.key, num(value) === cat.fixed ? '' : cat.fixed)}
               className={`flex-1 rounded-md py-1.5 text-sm font-bold ${
-                num(value) === cat.fixed ? 'bg-gold text-charcoal' : 'border border-gold/25 bg-charcoal/50 text-ivory'
+                num(value) === cat.fixed ? 'bg-gold text-white' : 'border border-gold/25 bg-charcoal/50 text-ivory'
               }`}
             >
               {cat.fixed}
@@ -190,7 +190,7 @@ export default function FullBoardYahtzee() {
             <button
               onClick={() => setCell(ci, p.id, cat.key, value === 0 || value === '0' ? '' : 0)}
               className={`w-8 rounded-md py-1.5 text-sm font-bold ${
-                value === 0 || value === '0' ? 'bg-burgundy text-ivory' : 'border border-gold/15 bg-charcoal/40 text-ivory-dim'
+                value === 0 || value === '0' ? 'bg-burgundy text-white' : 'border border-gold/15 bg-charcoal/40 text-ivory-dim'
               }`}
             >
               ✗
@@ -203,7 +203,7 @@ export default function FullBoardYahtzee() {
             value={value}
             onChange={(e) => setCell(ci, p.id, cat.key, e.target.value)}
             placeholder="–"
-            className="w-full rounded-md border border-gold/20 bg-charcoal/60 px-1.5 py-1.5 text-center text-base font-semibold text-ivory placeholder:text-ivory-dim/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/50"
+            className="w-full rounded-md border border-black/15 bg-white px-1.5 py-1.5 text-center text-base font-semibold text-ivory placeholder:text-ivory-dim/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/50"
           />
         )}
       </td>

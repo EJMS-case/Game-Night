@@ -35,7 +35,7 @@ function Tab({ to, name, label, end, badge }) {
           <span className="relative">
             <TabIcon name={name} />
             {badge && (
-              <span className="absolute -right-1.5 -top-1 h-2.5 w-2.5 animate-pulse-glow rounded-full bg-gold ring-2 ring-charcoal" />
+              <span className="absolute -right-1.5 -top-1 h-2.5 w-2.5 animate-pulse-glow rounded-full bg-gold ring-2 ring-charcoal-card" />
             )}
           </span>
           {label}
@@ -48,7 +48,7 @@ function Tab({ to, name, label, end, badge }) {
 export default function Nav() {
   const { activeGame } = useApp()
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-gold/20 bg-charcoal/95 backdrop-blur-md safe-bottom">
+    <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-black/10 bg-charcoal-card/95 backdrop-blur-md safe-bottom">
       <div className="mx-auto flex max-w-2xl items-stretch px-2">
         <Tab to="/" name="home" label="Home" end />
         <Tab to="/game" name="play" label="Game" badge={!!activeGame} />
