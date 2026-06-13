@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply font-body text-ivory antialiased;
+    margin: 0;
+    /* Clean, light "linen" background with the faintest warm tint. */
+    background-color: #f6f5f1;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(20, 122, 92, 0.05), transparent 40%),
+      radial-gradient(circle at 90% 5%, rgba(122, 46, 64, 0.04), transparent 38%);
+    background-attachment: fixed;
+  }
+
+  /* Very subtle paper grain — barely-there texture, not the old heavy felt. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(20, 122, 92, 0.25);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(20, 122, 92, 0.45);
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-black/[0.06] bg-charcoal-card shadow-card;
+  }
+
+  /* Soft tinted panel (used for celebratory / highlighted surfaces). */
+  .card-felt {
+    background-color: #f1f7f4;
+    background-image: linear-gradient(160deg, rgba(20, 122, 92, 0.08), rgba(20, 122, 92, 0.02));
+    @apply rounded-2xl border border-gold/20 shadow-card;
+  }
+
+  .gold-divider {
+    @apply border-0 border-t border-black/10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-body font-semibold
+           transition-all duration-150 active:scale-[0.97] select-none disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-white shadow-gold-glow hover:bg-gold-light;
+  }
+  .btn-burgundy {
+    @apply btn bg-burgundy text-white hover:bg-burgundy-light;
+  }
+  .btn-forest {
+    @apply btn bg-forest text-white hover:bg-forest-light;
+  }
+  .btn-ghost {
+    @apply btn border border-gold/40 bg-white text-gold hover:bg-gold/5;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-black/15 bg-white px-3 py-2.5 text-ivory
+           placeholder:text-ivory-dim/50 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40;
+  }
+
+  .stat-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-sm shadow-sm;
+  }
+
+  .heading {
+    @apply font-display font-bold tracking-tight text-ivory;
+  }
+
+  .label-caps {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(95deg, #18906c, #147a5c 55%, #0e5d45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .safe-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+  }
+  .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
